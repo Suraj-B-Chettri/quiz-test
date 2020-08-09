@@ -1,0 +1,70 @@
+.Score-Container {
+    margin: 15px;
+    position: relative;
+    float: right;
+    padding: 10px;
+    color: rgb(15, 91, 167);
+    border: 4px solid rgb(25, 118, 210);
+    font-weight: 550;
+}
+
+
+.Progress-bar-red {
+    color: rgb(25, 118, 210);
+    font-weight: 550;
+}
+
+.Four-Options {
+    border: 2px solid rgb(104, 99, 99);
+    margin: 3px auto;
+    padding: 10px 5px;
+    list-style-type: decimal;
+    cursor: pointer;
+}
+
+.Four-Options:hover {
+    color: white;
+    background-color: rgb(104, 99, 99);
+}
+
+.Correct {
+    color: white;
+    background-color: green;
+    animation-name: correct-blink;
+    animation-timing-function: linear;
+    animation-duration: 1s;
+}
+
+.Error {
+    color: white;
+    background-color: red;
+    animation-timing-function: linear;
+    animation-name: error-blink;
+    animation-duration: 1s;
+}
+
+@keyframes correct-blink {
+    0% {background-color: green;}
+    25% {background-color: rgb(150, 147, 147);}
+    50% {background-color: green;}
+    75% {background-color: rgb(150, 147, 147);}
+    100% {background-color: green;}
+  }
+
+  
+  @keyframes error-blink {
+    0% {background-color: red;}
+    25% {background-color: rgb(150, 147, 147);}
+    50% {background-color: red;}
+    75% {background-color: rgb(150, 147, 147);}
+    100% {background-color: red;}
+  }
+  
+
+.Ul-Disabled {
+    pointer-events:none;  
+}
+
+.Question-Tag {
+    color: rgb(12, 60, 96);
+}
