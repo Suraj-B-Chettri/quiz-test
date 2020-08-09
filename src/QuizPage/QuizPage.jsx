@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import ProgressBar from 'react-bootstrap/ProgressBar'
-import { quizActions } from '../_actions';
 import './QuizPage.css';
-import { quiz } from '../_reducers/quiz.reducer';
 import { useHistory } from "react-router-dom";
 
 function QuizPage() {
@@ -17,8 +14,10 @@ function QuizPage() {
     const [myScore, setMyScore] = useState(0);
     const [progress, setProgress] =  useState(10 );
     const eachQuestionProgress = 10;
-    const [ulDisabled, setUIDisabled] = useState('')
-    const [nextButtonDisabled, setNextButtonDisabled] = useState('Ul-Disabled')
+    const [ulDisabled, setUIDisabled] = useState('');
+    const [nextButtonDisabled, setNextButtonDisabled] = useState('Ul-Disabled');
+    const [nextButton, setNextButton] = useState('Next');
+
 
     function handleClick(selectedAnswer, obj) {
         setUIDisabled('Ul-Disabled');
@@ -32,7 +31,6 @@ function QuizPage() {
             })
             setSelectedQuestion(obj)
 
-            console.log(selectedQuestion)
         } else {
             obj.options.forEach(eachOption => {
                 if(selectedAnswer == eachOption.option) {
@@ -48,13 +46,17 @@ function QuizPage() {
       function handleNext() {
         setNextButtonDisabled('Ul-Disabled')
         let currentIndex;
-        console.log(quizList);
         quizList.forEach((record, index)=> {
+
             if(record.id == selectedQuestion.id) {
                 currentIndex = index;
-                console.log(currentIndex)
             } 
         })
+        
+        if(currentIndex ==8) {
+                setNextButton('Go to Leader Board')
+        }
+
         if(quizList[currentIndex+1]) {
             setSelectedQuestion(quizList[currentIndex+1])
             setProgress(progress+eachQuestionProgress);
@@ -67,7 +69,6 @@ function QuizPage() {
             });
             localStorage.setItem('users', JSON.stringify(users));
             history.push('/leader-board')
-            console.log('finished')
         }
 
       }
@@ -94,7 +95,7 @@ function QuizPage() {
         </ul>
         }
         <div style={{textAlign: "center"}}>
-        <button className={nextButtonDisabled} onClick={() => handleNext()}>Next</button>
+        <button className={nextButtonDisabled} onClick={() => handleNext()}>{nextButton}</button>
         </div>
         </div>
     );

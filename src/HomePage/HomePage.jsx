@@ -143,12 +143,15 @@ function HomePage() {
 
     return (
         <div className="col-lg-8 offset-lg-2">
-            <h1>Hi {user.firstName}!</h1>
-        <p>You're logged in to Quiz Nepal.</p>
-        <button onClick={() => openQuiz()}>Start Quiz</button>
-            <p>
+            <p style={{float: "right" }}>
                 <Link to="/login">Logout</Link>
             </p>
+            <h1>Hi {user.firstName}!</h1>
+            <img style={{borderRadius: "17px"}} src="https://us.123rf.com/450wm/soifer/soifer1806/soifer180600044/103260351-stock-vector-quiz-time-announcement-poster-neon-signboard-vector-pub-quiz-vintage-styled-neon-glowing-letters-shi.jpg?ver=6" />
+            <br></br><br/>
+            <div style={{textAlign: "center"}}>
+            <button  onClick={() => openQuiz()}>Start Quiz</button>
+            </div>
         </div>
     );
 }
